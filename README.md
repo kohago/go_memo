@@ -1,41 +1,37 @@
-# GO study
+# Setup
+## set up golang 
+	https://golang.org/dl/
+* in the case OX:<br>
 
-## Setup
-
- * Goのインストール(OSX)
-  [パッケージ]
-  https://golang.org/dl/
-  [brew]
-  [node ,npm]が必要かもしれない！
-  `$ brew install go`
-
-  [GOPATHが設定されていない場合は設定する(bash)]
-  `$ go env GOPATH`
-　go version
-  [goclipe]
-  　GOROOT、GoPath,Go toolsのインスタンス
- =>eclipseでGoのHello　World
+	brew `$ brew install go`
+	node ,npm maybe required!
+	`$ go env GOPATH`
+	go version
+	
+##goclipe
+* GOROOT、GoPATH,Go tools
+* try Hello　World in Eclipse
  
-  [gdb]
-  　Gun　GDB
-  　./configure
-    make
-    make install
-    gdb --version
-  [gdbのkey-chainの設定]
-    システム、コード信頼
-    codesign -s gdb-cert `whick gdb`
-  [Eclipse Gdbの設定]  
- =>Debugできるようになる
+##gdb
+* download Gun　GDB
+	https://www.gnu.org/software/gdb/download/
+	./configure
+	make
+	make install
+	gdb --version
+* set gdb's key-chain 
+	system,code-signed
+	codesign -s gdb-cert `whick gdb`
+* set Eclipse C++ Gdb 
+* if you can Debug,Succeed!
  
  
-  [Google App Engine SDK for Goのインストール]
-  https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Go  
- 
-＝＞LocalのGAEでHelloWorld
+## Google App Engine SDK for Go
+	https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Go  
+ 	GAE HelloWorld(app.yaml)
 
-[others]
-  ```
+##others
+ ```
   $ go get -u github.com/constabulary/gb/...
   $ go get -u github.com/constabulary/gb/cmd/gb-vendor
   $ go get -u github.com/PalmStoneGames/gb-gae
@@ -46,7 +42,8 @@
   $ go get -u github.com/favclip/qbg/cmd/qbg
   $ go get -u github.com/favclip/smg/cmd/smg
   $ go get -u github.com/kisielk/errcheck
-  ```
-  
-  https://qiita.com/silverfox/items/3a50cafc44c25e8c52e3
+```
+
+##detail
+	https://qiita.com/silverfox/items/3a50cafc44c25e8c52e3
   

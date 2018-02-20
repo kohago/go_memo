@@ -9,7 +9,7 @@ type TestStruct struct {
 	y int
 }
 
-func step_up() {
+func main() {
 	//pointer
 	//testPointer()
 
@@ -17,7 +17,23 @@ func step_up() {
 	//testStruct()
 
 	//array
-	testArray()
+	//testArray()
+
+	//map
+	testMap()
+}
+
+//test Map
+func testMap() {
+	m := make(map[string]TestStruct)
+	m["test1"] = TestStruct{1, 2}
+
+	n := map[string]TestStruct{
+		"test11": TestStruct{3, 4},
+		"test12": TestStruct{5, 6},
+	}
+	fmt.Println(m["test1"])
+	fmt.Println(n)
 }
 
 //testArray
