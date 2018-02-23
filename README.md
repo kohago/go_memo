@@ -11,17 +11,22 @@
 ##goclipe
 * GOROOT、GoPATH,Go tools
 * try Hello　World in Eclipse
- 
+
 ##gdb
 * download Gun　GDB
-	https://www.gnu.org/software/gdb/download/
-	./configure
-	make
-	make install
-	gdb --version
+```
+  https://www.gnu.org/software/gdb/download/
+  ./configure
+  make
+  make install
+  gdb --version
+```
+
 * set gdb's key-chain 
 	system,code-signed
+	
 	codesign -s gdb-cert `whick gdb`
+	
 * set Eclipse C++ Gdb 
 * if you can Debug,Succeed!
  
