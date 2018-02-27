@@ -12,8 +12,85 @@ func testFunction() {
 
 	//practiceFibonacci()
 
-	testReceiver()
+	//testReceiver()
 
+	testInterface()
+	//testTypeSwitches()
+}
+
+func testTypeSwitches() {
+	do(21)
+	do("hello")
+	do(true)
+}
+func do(i interface{}) {
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("Twice %v is %v\n", v, v*2)
+	case string:
+		fmt.Printf("%q is %v bytes long\n", v, len(v))
+	default:
+		fmt.Printf("I can't know about type %T\n", v)
+	}
+}
+
+func testInterface() {
+
+	var theInterface TestInterface
+
+	//Type assertions
+	var i interface{} = "hello"
+	s := i.(string)
+	fmt.Println(s)
+
+	s, ok := i.(string)
+	fmt.Println(s, ok)
+
+	testF, ok := i.(float64)
+	fmt.Println(testF, ok)
+
+	testF = i.(float64)
+	fmt.Println(testF)
+
+	//testEmptyIF
+	//you can put any value into empty interface
+	var emptyIf interface{}
+	emptyIf = 42
+	fmt.Printf("(%v,%T\n)", emptyIf, emptyIf)
+	emptyIf = "test"
+	fmt.Printf("(%v,%T\n)", emptyIf, emptyIf)
+
+	//test null value
+	var theNilIf TestInterface
+	fmt.Printf("(%v,%T\n)", theNilIf, theNilIf)
+
+	f := Myfloat(-math.Sqrt2)
+	v := Vertex{3, 4}
+
+	theInterface = f
+	fmt.Printf("(%v,%T)\n", theInterface, theInterface)
+
+	theInterface = &v
+	fmt.Printf("(%v,%T)\n", theInterface, theInterface)
+
+	theInterface = v
+	fmt.Printf("(%v,%T)\n", theInterface, theInterface)
+
+	fmt.Println(theInterface.Abs())
+}
+
+type TestInterface interface {
+	Abs() float64
+}
+
+type Myfloat float64
+
+func (f Myfloat) Abs() float64 {
+	if f < 0 {
+		return float64(-f)
+	} else {
+		return float64(f)
+	}
 }
 
 type Vertex struct {
@@ -24,6 +101,9 @@ func (v Vertex) Abs() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
+//the merit of pointer function
+//.can change the value of the parameter
+//.no necessary to copy the parameter
 func (v *Vertex) PointerScale(f float64) {
 	v.X = v.X * f
 	v.Y = v.Y * f

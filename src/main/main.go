@@ -6,6 +6,7 @@ func main() {
 
 	//helloWorld()
 	//testStructs()
-
-	testFunction()
+	//testFunction()
+	//testReaders()
+	testRoutine()
 }
