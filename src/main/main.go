@@ -8,5 +8,7 @@ func main() {
 	//testStructs()
 	//testFunction()
 	//testReaders()
-	testRoutine()
+	//testRoutine()
+	testConcurrency()
+
 }
