@@ -52,3 +52,19 @@
 ##detail
 	https://qiita.com/silverfox/items/3a50cafc44c25e8c52e3
   
+##More party tricks
+There are endless ways to use these tools, many presented elsewhere.
+
+```
+Chatroulette toy:
+golang.org/s/chat-roulette
+
+Load balancer:
+golang.org/s/load-balancer
+
+Concurrent prime sieve:
+golang.org/s/prime-sieve
+
+Concurrent power series (by McIlroy):
+golang.org/s/power-series
+```

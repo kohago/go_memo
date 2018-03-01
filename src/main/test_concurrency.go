@@ -22,12 +22,13 @@ func testConcurrency() {
 
 	//testTimeOut()
 
-	testDaisyChain()
+	//testDaisyChain()
+
 	fmt.Println("You are boring,I leaving.")
 }
 
 func testDaisyChain() {
-	const n = 10000
+	const n = 3
 	leftmost := make(chan int)
 	left := leftmost
 	right := leftmost
@@ -35,7 +36,11 @@ func testDaisyChain() {
 	fmt.Printf("right:%T,%v\n", right, right)
 	fmt.Println("")
 
-	for i := 0; i < 2; i++ {
+	//one go rutine is one person,has two chan
+	//firstly create the queue from left to right
+	//then,kick it from right to left
+	//just like domino
+	for i := 0; i < n; i++ {
 		fmt.Println("----", i, "begin---")
 		right = make(chan int)
 		fmt.Printf("right after make: %T,%v\n", right, right)
@@ -47,15 +52,17 @@ func testDaisyChain() {
 		fmt.Println("")
 	}
 
+	time.Sleep(n * time.Second)
 	right <- 1
 
 	fmt.Println(<-leftmost)
 }
 func messageSomeone(left, right chan int) {
 	fmt.Println("")
-
+	fmt.Println("**************--------************")
 	fmt.Printf("left in routine: %T,%v\n", left, left)
 	fmt.Printf("right in routine:%T,%v\n", right, right)
+	fmt.Println("**************--------************")
 	left <- 1 + <-right
 }
 
