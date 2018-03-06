@@ -84,6 +84,7 @@ func testArray() {
 		pow[i] = 1 << uint(i)
 	}
 
+	//take value only
 	for _, value := range pow {
 		fmt.Printf("%d\n", value)
 	}

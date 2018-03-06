@@ -10,6 +10,6 @@ func main() {
 	//testReaders()
 	//testRoutine()
 	//testConcurrency()
-	googleFakeSearch()
-
+	//googleFakeSearch()
+	testChanChan()
 }
