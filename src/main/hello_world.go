@@ -32,6 +32,7 @@ func helloWorld() {
 
 	var i, you, he, her string = "a", "b", "c", "d"
 	var message string = "my name is jama!"
+	// := declaration and subsititute, var is unnecessary
 	longMsg := "jama him"
 
 	const nerverChange string = "never change!"
