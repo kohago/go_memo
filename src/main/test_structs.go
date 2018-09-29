@@ -64,7 +64,7 @@ func testArray() {
 	fmt.Println(manyValues)
 
 	for i, v := range manyValues {
-		fmt.Printf("%d,%d\nß", i, v)
+		fmt.Printf("%d,%d\n", i, v)
 	}
 
 	slice := manyValues[1:4]

@@ -174,6 +174,7 @@ func chanBoring(msg string, c chan string) {
 func testRoutineBoring() {
 	go simpleBoring()
 	fmt.Println("I am listening!")
+	//just listening for 2 seconds
 	time.Sleep(2 * time.Second)
 }
 

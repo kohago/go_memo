@@ -9,7 +9,7 @@ func main() {
 	//testFunction()
 	//testReaders()
 	//testRoutine()
-	//testConcurrency()
+	testConcurrency()
 	//googleFakeSearch()
-	testChanChan()
+	//testChanChan()
 }

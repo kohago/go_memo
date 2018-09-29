@@ -29,7 +29,9 @@
 	
 * set Eclipse C++ Gdb 
 * if you can Debug,Succeed!
- 
+
+* eclipse build Target->build
+* run as go application
  
 ## Google App Engine SDK for Go
 	https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Go  
