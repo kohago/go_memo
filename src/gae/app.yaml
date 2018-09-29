@@ -1,0 +1,21 @@
+runtime: go
+# When you specify the go1 value, the latest supported runtime environment is used each time you deploy that app
+api_version: go1
+
+#If omitted, the production server sets the expiration to 10 minutes.
+default_expiration: "10m"
+
+#can be used with os.Getenv(key)
+#env_varialbles:
+#  MY_VAR: 'a test env var'
+
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /static
+  static_dir: static
+
+- url: /hello
+  script: _go_app
