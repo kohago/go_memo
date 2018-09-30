@@ -30,3 +30,8 @@ gcloud app deploy
 gcloud app browser
 gcloud app logs tail -s default
 ```
+
+#Run And Debug in IntelliJ(Can't debug.....)
+## Setting:install google clouds tool plugin 
+## Run Menu:set up run configuration go app Engine
+## Set GOROOT to googeAppEngine GoRoot

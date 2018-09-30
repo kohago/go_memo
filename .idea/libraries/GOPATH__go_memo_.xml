@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;go_memo&gt;">
+    <CLASSES>
+      <root url="file://D:/go/goPath/src/golang.org" />
+      <root url="file://D:/go/goPath/src/github.com" />
+      <root url="file://D:/go/goPath/src/google.golang.org" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://D:/go/goPath/src/golang.org" />
+      <root url="file://D:/go/goPath/src/github.com" />
+      <root url="file://D:/go/goPath/src/google.golang.org" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>

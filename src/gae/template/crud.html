@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>To Test Form</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+
+{{with .Notice}}<div id="notice">{{.}}</div>{{end}}
+<br>
+<br>
+
+<form action="/crud" method="post">
+    <div>Name: <input name="name" value="{{.Name}}"></div>
+    <div>Message: <input name="message" value="{{.Message}}"></div>
+    <input type="submit" value="submit">
+</form>
+
+<br>
+<br>
+
+<div>
+    {{with .Posts}}
+        <ol>
+            {{range .}}
+             <li>{{.Author}}<p>{{.Message}}</p><p>{{.Posted}}</p></li>
+            {{end}}
+        </ol>
+    {{end}}
+</div>
+
+</body>
+</html>
