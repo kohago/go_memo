@@ -1,5 +1,5 @@
 # Setup
-## set up golang 
+## set up golang
 	https://golang.org/dl/
 * in the case OX:<br>
 
@@ -7,7 +7,7 @@
 	node ,npm maybe required!
 	`$ go env GOPATH`
 	go version
-	
+
 ##goclipe
 * GOROOT、GoPATH,Go tools
 * try Hello　World in Eclipse
@@ -22,17 +22,17 @@
   gdb --version
 ```
 
-* set gdb's key-chain 
+* set gdb's key-chain
 	system,code-signed
-	
+
 	codesign -s gdb-cert `whick gdb`
-	
-* set Eclipse C++ Gdb 
+
+* set Eclipse C++ Gdb
 * if you can Debug,Succeed!
 
 * eclipse build Target->build
 * run as go application
- 
+
 ## Google App Engine SDK for Go
 	https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Go  
  	GAE HelloWorld(app.yaml)
@@ -53,7 +53,7 @@
 
 ##detail
 	https://qiita.com/silverfox/items/3a50cafc44c25e8c52e3
-  
+
 ##More party tricks
 There are endless ways to use these tools, many presented elsewhere.
 
@@ -70,3 +70,10 @@ golang.org/s/prime-sieve
 Concurrent power series (by McIlroy):
 golang.org/s/power-series
 ```
+
+## Intellij
+### plugIn
+ - File Watchers
+ - CamelCasePlugin
+ - go
+ - googleCloud
