@@ -1,4 +1,4 @@
-GoのVersion管理を楽に
+gvm GoのVersion管理を楽に
 
 ```
 <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
