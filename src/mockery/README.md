@@ -17,5 +17,25 @@ walker.Walk(vistor)->generate mockers
       OK＝＞parse(file)
     }
 //対象interfaceをParseする
-
+  visitor.VisitWalk(iface)
+   ->generator.Generate()
+    generate prologeNote
+    generate packageName
+    generate imports:nameToPackagePath
+        {
+          method's parameters and return results を見て、必要なものをimportする
+          g.addImportsFromTuple(ftype.Params())
+		      g.addImportsFromTuple(ftype.Results())
+        }
 ```
+
+- mock生成の注意点
+ packageが違うから、ぜんぜん別物と認識される。
+ have mocks.fromRecord(*repository.TaskRecord) *domain.Task
+ want repository.fromRecord(*repository.TaskRecord) *domain.Task
+
+
+- when cann't find interface,mockery will be stuck....
+- when cann't found some import path ,mockery will print the real path for import
+  that will be a compile error
+  import xxx "_/Users/xx/....."

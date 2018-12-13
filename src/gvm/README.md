@@ -12,9 +12,11 @@ gvm use go1.11.1 --default
 
 go version
 
-///Users/kouha.shu/.gvm/gos/go1.11.1
+///Users/xxx/.gvm/gos/go1.11.1
 echo $GOROOT
 
 ///Users/xxx/.gvm/pkgsets/go1.11.1/global
 echo $GOPATH
+
+can add gopath to Users/xxx/.gvm/enviroments/go1.xxxx
 ```
