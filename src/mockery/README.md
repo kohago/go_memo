@@ -38,4 +38,5 @@ walker.Walk(vistor)->generate mockers
 - when cann't find interface,mockery will be stuck....
 - when cann't found some import path ,mockery will print the real path for import
   that will be a compile error
+
   import xxx "_/Users/xx/....."
