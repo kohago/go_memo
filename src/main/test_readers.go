@@ -7,7 +7,14 @@ import (
 )
 
 func testReaders() {
+
+	testVarReader()
+	//testFileReader()
+}
+
+func testVarReader()  {
 	r := strings.NewReader("Hello! new Reader")
+	//byte's array
 	b := make([]byte, 8)
 
 	for {
@@ -20,3 +27,4 @@ func testReaders() {
 		}
 	}
 }
+

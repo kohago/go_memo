@@ -8,23 +8,24 @@ import (
 func testFunction() {
 	testFunctionValue()
 
-	testClosure()
+	//testClosure()
 
-	practiceFibonacci()
+	//practiceFibonacci()
 
-	testReceiver()
+	//testReceiver()
 
-	testInterface()
+	//testInterface()
 
-	testTypeSwitches()
+	//testTypeSwitches()
 }
 
+
+//testTypeSwitches
 func testTypeSwitches() {
 	do(21)
 	do("hello")
 	do(true)
 }
-
 func do(i interface{}) {
 	switch v := i.(type) {
 	case int:
@@ -36,10 +37,11 @@ func do(i interface{}) {
 	}
 }
 
+
+//testInterface
 func testInterface() {
 
 	var theInterface TestInterface
-
 	//testEmptyIF
 	//you can put any value into empty interface  interface{}
 	//Empty interfaces are used by code that handles values of unknown type
@@ -51,6 +53,7 @@ func testInterface() {
 
 	//test null value
 	var theNilIf TestInterface
+	//(<nil>,<nil>)--> nil is the type nil.nil is a type
 	fmt.Printf("(%v,%T)\n", theNilIf, theNilIf)
 
 	f := Myfloat(-math.Sqrt2)
@@ -76,6 +79,8 @@ func testInterface() {
 	fmt.Println(s, ok)
 
 	testF, ok := i.(float64)
+	//0 false-->when failed will be the default value 0
+	//there is no panic
 	fmt.Println(testF, ok)
 
 	//will cause a panic,code behind will not executed!
@@ -114,6 +119,7 @@ func (v Vertex) Abs() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
+
 //the merit of pointer function
 // because of pointer's byRef
 //.can change the value of the parameter
@@ -149,10 +155,12 @@ func practiceFibonacci() {
 }
 
 //practice fibonacci
+//this is a closure with a,b and one function
+//the function returns a function---> func fib()--> func() int
 func fib() func() int {
 	a, b := 0, 1
 	return func() int {
-		a, b = b, a+b
+		a, b = b, a+b//a=b b=a+b
 		return a
 	}
 }
@@ -167,6 +175,7 @@ func testFunctionValue() {
 
 	fmt.Println(myFunc(2, 3))
 	fmt.Println(compute(myFunc))
+	//math.Pow-->x,y={x*...x} y'th x
 	fmt.Println(compute(math.Pow))
 }
 
@@ -176,6 +185,7 @@ func compute(fn func(float64, float64) float64) float64 {
 
 //test closure
 //A closure is a function value that references variables from outside its body
+//A closure has a value that can interact with it's function
 func testClosure() {
 	fmt.Println("--test closure--")
 	aClosure, bClosure := someClousure(), someClousure()

@@ -7,16 +7,17 @@ import (
 )
 
 func testRoutine() {
-	testSayHello()
-	testChannels()
-	testSelect()
+	//testSayHello()
+	//testChannels()
+	//testSelect()
 	testMutex()
 }
 
 //juse [go xxx] will start a routine
+//this is no order.just run by itself freely
 func testSayHello() {
-	go say("slowly world!")
-	say("hello")
+	go say("hello,i am go routine!maybe i am faster.")
+	say("hello,i am go main routine world!")
 }
 
 func say(s string) {
@@ -26,6 +27,9 @@ func say(s string) {
 	}
 }
 
+//communication with go routines by channel,
+// sending values,signals to channel c <-
+// receive values,signal from channel <- c
 func testChannels() {
 	s := []int{1, 2, 3, 4, 5, 6, 7}
 	// make channel int type with buffer
@@ -61,14 +65,17 @@ func testSelect() {
 	go func() {
 		for i := 0; i < 10; i++ {
 			//will stop here to communicate with c that has been blocked!
-			//do the same thing for ten times
+			//wait for channel
+			//do the same thing(when the values sent to channel from some other place,print the value from channel) for ten times
 			fmt.Println(<-c)
 		}
+		//better to use struct{},because it's just a signal.
 		quit <- 0
 	}()
 	fibonacci(c, quit)
 }
 
+//select? patterns to  communicate with channel
 func fibonacci(c, quit chan int) {
 	x, y := 0, 1
 	for {
@@ -107,6 +114,8 @@ func (c *SafeCounter) Inc(key string) {
 	c.mux.Unlock()
 }
 
+//defer
+//run defer when exit Value function,even there is soma panic.
 func (c *SafeCounter) Value(key string) int {
 	c.mux.Lock()
 	defer c.mux.Unlock()

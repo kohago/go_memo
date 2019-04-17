@@ -22,7 +22,7 @@ func testConcurrency() {
 
 	//testTimeOut()
 
-	//testDaisyChain()
+	testDaisyChain()
 
 	fmt.Println("You are boring,I leaving.")
 }
@@ -32,14 +32,23 @@ func testDaisyChain() {
 	leftmost := make(chan int)
 	left := leftmost
 	right := leftmost
+	fmt.Printf("leftmost: %T,%v\n", leftmost, leftmost)
 	fmt.Printf("left: %T,%v\n", left, left)
 	fmt.Printf("right:%T,%v\n", right, right)
 	fmt.Println("")
 
-	//one go rutine is one person,has two chan
+	//one go routine is one person,has two chan
 	//firstly create the queue from left to right
 	//then,kick it from right to left
 	//just like domino
+
+	//1:   chan1(left,right,leftmost)
+	//2:   chan2(right)
+	//3:   chan1<-chan2
+	//4:   chan2(right,left)
+	//5:   chan3(right)
+	//    ....
+	//    chanx<-1
 	for i := 0; i < n; i++ {
 		fmt.Println("----", i, "begin---")
 		right = make(chan int)
@@ -115,11 +124,11 @@ func testConCurFunChan() {
 
 func conCurFunChan(input1, input2 <-chan string) <-chan string {
 	conCurC := make(chan string)
-	//<-input1: things getted from input1,Name it as I1
-	//c <-I1 :put things from I1 to c
 	go func() {
 		// let it live until the main is over using for
 		for {
+			//<-input1: things from input1,Name it as I1
+			//c <-I1 :put things from I1 to c
 			conCurC <- <-input1
 		}
 	}()
@@ -142,7 +151,7 @@ func testFuncReturnsChan() {
 	}
 }
 
-//create a chan which recive some msg,then return it
+//create a chan which receive some msg,then return it
 func funcChanBoring(msg string) <-chan string {
 	c := make(chan string)
 	go func() {

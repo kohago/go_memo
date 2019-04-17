@@ -60,7 +60,7 @@ func fakeSearch(kind string) Search {
 	}
 }
 
-// append is slow
+// sequential append is slow
 func googleVersion0(query string) (results []Result) {
 	results = append(results, Web(query))
 	results = append(results, Video(query))
@@ -68,6 +68,7 @@ func googleVersion0(query string) (results []Result) {
 	return results
 }
 
+//concurrently append use channel
 func googleVersion1(query string) (results []Result) {
 	c := make(chan Result)
 	go func() {
@@ -90,7 +91,7 @@ func googleVersion1(query string) (results []Result) {
 			return
 		}
 	}
-	//it is very obvious to return results
+	//it is very obvious that results is the return value
 	return
 }
 
