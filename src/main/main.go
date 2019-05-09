@@ -7,6 +7,8 @@ func main() {
 
 	fmt.Printf("I am main!\n")
 
+	//part1: basic set
+	//fmt.Printf("some basic things!\n")
 	//helloWorld()
 	//testDefer()
 	//testStructs()
@@ -15,5 +17,10 @@ func main() {
 	//testRoutine()
 	//testConcurrency()
 	//googleFakeSearch()
-	testChanChan()
+	//testChanChan()
+
+	//part2: some details
+	//fmt.Printf("some details!\n")
+	//testCollection()
+	testChan()
 }
