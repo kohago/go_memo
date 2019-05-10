@@ -1,11 +1,8 @@
 package main
 
-import "fmt"
-
 //run go build main.go xxx.go
+//mainパッケージ以外はエントリポイントとして扱うことができない
 func main() {
-
-	fmt.Printf("I am main!\n")
 
 	//part1: basic set
 	//fmt.Printf("some basic things!\n")
@@ -22,5 +19,5 @@ func main() {
 	//part2: some details
 	//fmt.Printf("some details!\n")
 	//testCollection()
-	testChan()
+	testShareMemory()
 }

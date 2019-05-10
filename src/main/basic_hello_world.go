@@ -20,7 +20,7 @@ const (
 	Small = Big >> 99
 )
 
-func helloWorld() {
+func HelloWorld() {
 	//const
 	fmt.Println(Hello, World)
 	fmt.Println(Small)
