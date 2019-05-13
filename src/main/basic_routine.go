@@ -80,9 +80,11 @@ func fibonacci(c, quit chan int) {
 	x, y := 0, 1
 	for {
 		select {
-		//block the c channel. After x are pushed to c, c can be used
+
+		//if <-c has been existed,case will be executed
 		case c <- x:
 			x, y = y, x+y
+		// After something pushed to quit, go into the case
 		case <-quit:
 			fmt.Println("quit")
 			return

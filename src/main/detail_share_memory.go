@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"time"
 )
 
 /**
@@ -49,30 +50,32 @@ var wait sync.WaitGroup
 
     wait.Wait() // block住了，直到所有goroutine都结束
 
- */
+*/
 
-func testShareMemory()  {
+func testShareMemory() {
 	//testWaitAndSyncOnce()
-	testCancelContext()
+	//testCancelContext()
+	//testContextDeadline()
+	testWithValue()
 }
 
- //use waitGroup to keep the main goRoutine alive
- //trans i to goRoutines,because if not i may be changed when the goRoutine begin to run
- //once,really just once!
-func testWaitAndSyncOnce()  {
+//use waitGroup to keep the main goRoutine alive
+//trans i to goRoutines,because if not i may be changed when the goRoutine begin to run
+//once,really just once!
+func testWaitAndSyncOnce() {
 	var once sync.Once
-	onceBody:= func() {
+	onceBody := func() {
 		fmt.Println("run once")
 	}
 
 	var wait sync.WaitGroup
 	wait.Add(10)
 
-	for i:=0;i<10;i++{
+	for i := 0; i < 10; i++ {
 		go func(i int) {
 			fmt.Println(i)
 			once.Do(onceBody)
-			defer  wait.Done()
+			defer wait.Done()
 		}(i)
 	}
 
@@ -104,20 +107,20 @@ func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
 
 //不可撤销的Context,可以存一个kv的值
 func WithValue(parent Context, key, val interface{}) Context
- */
-func testCancelContext()  {
+*/
+func testCancelContext() {
 	//gen is func that will return a chan ,when the chan receive a int value
-	gen := func(ctx context.Context) <-chan int{
-		dst:=make(chan int)
-		n:=1
-
+	gen := func(ctx context.Context) <-chan int {
+		dst := make(chan int)
+		n := 1
 		go func() {
-			for{
+			for {
 				select {
-					case <-ctx.Done():
-						return
-					case dst <- n:
-						n++
+				//every goroutine close itself
+				case <-ctx.Done():
+					return
+				case dst <- n:
+					n++
 				}
 			}
 		}()
@@ -125,18 +128,56 @@ func testCancelContext()  {
 		return dst
 	}
 
-	ctx,cancel:=context.WithCancel(context.Background())
+	ctx, cancel := context.WithCancel(context.Background())
 	//cancel is a func that finish ctx.call it will finish the ctx
 	defer cancel()
 
 	//range a chan
 	//means always  use the chan's received value unit the chan die...!
+	//almonst equals <-gen(ctx)
 	//https://gobyexample.com/range-over-channels
-	for n:=range gen(ctx){
+	for n := range gen(ctx) {
 		//print the value received from gen
 		fmt.Println(n)
-		if n==5 {
-			break;
+		if n == 5 {
+			break //then goto cancel()
 		}
 	}
+}
+
+func testContextDeadline() {
+	d := time.Now().Add(50 * time.Millisecond)
+	//cancel is a function
+	ctx, cancel := context.WithDeadline(context.Background(), d)
+
+	defer cancel()
+
+	select {
+	case <-time.After(1 * time.Second):
+		fmt.Println("over sleep")
+	case <-ctx.Done():
+		fmt.Println(ctx.Err())
+	}
+
+}
+
+func testWithValue() {
+	ctx1 := context.WithValue(context.Background(), "key1", "go1")
+	ctx2 := context.WithValue(ctx1, "key2", "go2")
+
+	f := func(ctx context.Context, k interface{}) {
+		if v := ctx.Value(k); v != nil {
+			fmt.Printf(" found value:%v\n", v)
+			return
+		}
+		fmt.Println("not found")
+	}
+
+	f(ctx2, "key1")
+	f(ctx2, "key2")
+
+	f(ctx1, "key1")
+	//not found
+	f(ctx1, "key2")
+
 }
