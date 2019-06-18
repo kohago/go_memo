@@ -19,6 +19,9 @@ func testFunction() {
 	//testTypeSwitches()
 }
 
+// When return value named, they are initialized to the zero values for their types when the function begins;
+//-->good!
+// func some() (t int,err error)
 
 //testTypeSwitches
 func testTypeSwitches() {
@@ -36,7 +39,6 @@ func do(i interface{}) {
 		fmt.Printf("I can't know about type %T\n", v)
 	}
 }
-
 
 //testInterface
 func testInterface() {
@@ -119,7 +121,6 @@ func (v Vertex) Abs() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
-
 //the merit of pointer function
 // because of pointer's byRef
 //.can change the value of the parameter
@@ -160,7 +161,7 @@ func practiceFibonacci() {
 func fib() func() int {
 	a, b := 0, 1
 	return func() int {
-		a, b = b, a+b//a=b b=a+b
+		a, b = b, a+b //a=b b=a+b
 		return a
 	}
 }

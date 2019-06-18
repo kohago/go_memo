@@ -19,5 +19,16 @@ func main() {
 	//part2: some details
 	//fmt.Printf("some details!\n")
 	//testCollection()
-	testShareMemory()
+	//testShareMemory()
+
+	//part3: practice
+	//PracticeFunc()
+	//PracticeDefer()
+	//PracticeForEach()
+	//PracticeOOP()
+	//PracticeSelect()
+	//PracticeMake()
+	//PracticeMutex()
+	//PracticeInterface()
+	//PracticeType()
 }
