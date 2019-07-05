@@ -31,4 +31,12 @@ func main() {
 	//PracticeMutex()
 	//PracticeInterface()
 	//PracticeType()
+	//PracticeCompare()
+	//PracticeIota()
+	//PracticeVar()
+	//PracticeRex()
+	//PracticeReturn()
+	//racticeClosure()
+	PracticePanic()
+
 }

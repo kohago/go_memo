@@ -61,4 +61,25 @@ func PracticeInterface() {
 	} else {
 		fmt.Println("HHHHH")
 	}
+
+	var i *int
+	testNil(i)
+
+	//An interface value is equal to nil only if both its value and dynamic type are nil
+	var j interface{}
+	testNil(j)
+
+}
+
+/**
+nil is not equals <nil>
+nil has type
+An interface value is equal to nil only if both its value and dynamic type are nil
+*/
+func testNil(x interface{}) {
+	if x == nil {
+		fmt.Println("x is nil")
+	} else {
+		fmt.Printf("x is not nil,x is %v\n", x)
+	}
 }
